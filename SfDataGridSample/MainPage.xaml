@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:local="clr-namespace:SfDataGridSample"
+             xmlns:behaviors="clr-namespace:SfDataGridSample.Behavior"
+             x:Class="SfDataGridSample.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:EmployeeViewModel x:Name="viewModel" />
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <Button x:Name="button" Text="Export to PDF" >
+            <Button.Behaviors>
+                <behaviors:ButtonBehavior/>
+            </Button.Behaviors>
+        </Button>
+        <syncfusion:SfDataGrid  x:Name="dataGrid1" ItemsSource="{Binding Employees}" AutoGenerateColumnsMode="None">
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:DataGridNumericColumn MappingName="EmployeeID" HeaderText="New Employee ID "/>
+                <syncfusion:DataGridTextColumn MappingName="Name" HeaderText="New Employee Name "/>
+                <syncfusion:DataGridTextColumn MappingName="IDNumber" HeaderText="New ID Number"/>                
+            </syncfusion:SfDataGrid.Columns>
+        </syncfusion:SfDataGrid>
+
+        <syncfusion:SfDataGrid  x:Name="dataGrid2" ItemsSource="{Binding Employees}" AutoGenerateColumnsMode="None">
+            <syncfusion:SfDataGrid.Columns>
+                <syncfusion:DataGridNumericColumn MappingName="EmployeeID" HeaderText="Old Employee ID"/>
+                <syncfusion:DataGridTextColumn MappingName="Name" HeaderText="Old Name"/>
+                <syncfusion:DataGridTextColumn MappingName="IDNumber" HeaderText="Old ID Number"/>
+            </syncfusion:SfDataGrid.Columns>
+        </syncfusion:SfDataGrid>
+    </StackLayout>
+</ContentPage>
